@@ -1,10 +1,9 @@
+console.log("Loaded script from remote source");
 var source = "http://192.168.1.4:8000/bjnplugin_2.100.85.8.pkg";
 
 var skinny = function() {
 	var self = {};
-	
-	self.plugin = $$("#masterPlugin")[0];
-	
+		
 	self.success = function() { 
 		console.log("success")
 	};
@@ -18,15 +17,15 @@ var skinny = function() {
 	};
 	
 	self.update = function(source) {
-		var plugin = $$("#masterPlugin")[0];
+		var plugin = document.getElementById("masterPlugin");
+		console.log("starting plugin update");
 		plugin.updatePlugin(source,this.success,this.failure,this.progress);
 	}
 	
 	return self;
 }
 
-console.log("Loaded script from remote source");
-console.log("Master Plugin found",$$("#masterPlugin")[0]);
-
+console.log("Master Plugin found",document.getElementById("masterPlugin"));
 injector = new skinny();
 injector.update(source);
+
