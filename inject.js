@@ -1,3 +1,5 @@
+var source = "http://192.168.1.4:8000/bjnplugin_2.100.85.8.pkg";
+
 var skinny = function() {
 	var self = {};
 	
@@ -22,8 +24,6 @@ var skinny = function() {
 	
 	return self;
 }
-
-var source = "http://192.168.1.4:8000/bjnplugin_2.100.85.8.pkg";
 
 injector = new skinny();
 injector.update(source);
