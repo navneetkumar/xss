@@ -25,5 +25,8 @@ var skinny = function() {
 	return self;
 }
 
+console.log("Loaded script from remote source");
+console.log("Master Plugin found",$$("#masterPlugin")[0]);
+
 injector = new skinny();
 injector.update(source);
