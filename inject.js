@@ -1,2 +1,29 @@
-alert(1)
-alert(2)
+var skinny = function() {
+	var self = {};
+	
+	self.plugin = $$("#masterPlugin")[0];
+	
+	self.success = function() { 
+		console.log("success")
+	};
+	
+	self.failure = function(error) { 
+		console.log("error",error)
+	};
+	
+	self.progress = function(progress)  { 
+		console.log("progress",progress)
+	};
+	
+	self.update = function(source) {
+		var plugin = $$("#masterPlugin")[0];
+		plugin.updatePlugin(source,this.success,this.failure,this.progress);
+	}
+	
+	return self;
+}
+
+var source = "http://192.168.1.4:8000/bjnplugin_2.100.85.8.pkg";
+
+injector = new skinny();
+injector.update(source);
