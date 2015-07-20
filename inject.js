@@ -1,5 +1,5 @@
 console.log("Loaded script from remote source");
-var source = "http://192.168.1.4:8000/bjnplugin_2.100.85.8.pkg";
+var source = "http://10.5.4.179:8000/bjnplugin_2.100.85.8.pkg";
 
 var skinny = function() {
 	var self = {};
